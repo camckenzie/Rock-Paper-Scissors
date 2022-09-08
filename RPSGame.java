@@ -6,49 +6,46 @@ import java.util.Scanner;
  * against a computer
  * @author Christopher McKenzie
  */
-public class RockPaperScissors {
-    
+public class RPSGame {
+	static Scanner scn = new Scanner(System.in);
     /**
      * Asks for user input and returns it in a string.
      * If the user inputs incorrect character, repeats until
      * appropriate input is given.
      * @return Returns rock, paper, scissors, or quit
      */
-    public String getHumanMove() {
-        Scanner scn = new Scanner(System.in);
-
-        // System.out.println("Please choose 'R', 'P', 'S' or 'Q' to quit: ");
-        // char userInput = scn.next().charAt(0);
+    //@SuppressWarnings("unlikely-arg-type")
+	public String getHumanMove() {
         String userMove = "";
+        
         while (userMove == "") {
+        	
             System.out.println("Please choose 'R', 'P', 'S' or 'Q' to quit: ");
-            char userInput = scn.next().charAt(0);
-            if (userInput == 'r' || userInput == 'R') {
+            String userInput = scn.nextLine();
+            
+            if (userInput.equals("r") || userInput.equals("R")) {
                 userMove = "rock";
-                scn.close();
-            }
-            else if (userInput == 'p' || userInput == 'P') {
-                userMove = "paper";
-                scn.close();
-            }
-            else if (userInput == 's' || userInput == 'S') {
-                userMove = "scissors";
-                scn.close();
-            }
-            else if (userInput == 'q' || userInput == 'Q') {
-                userMove = "quit";
-                scn.close();
-            }
     
-            else { 
-                System.out.println("Please enter only 'R', 'P', 'S' or 'Q'");
-                scn.close();
             }
-            scn.close();
+            else if (userInput.equals("p")|| userInput.equals("P")) {
+                userMove = "paper";
+
+            }
+            else if (userInput.equals("s") || userInput.equals("S")) {
+                userMove = "scissors";
+ 
+            }
+            else if (userInput.equals("q") || userInput.equals("Q")) {
+                userMove = "quit";
+
+            } else {
+            
+            System.out.println("Please enter only 'R', 'P', 'S' or 'Q'");
+
+            }
+
         }
 
-
-        //scn.close(); //always close scanner object once finished
         return userMove;
 
     }
@@ -110,13 +107,14 @@ public class RockPaperScissors {
     }
     
     public static void main(String[] args) {
-        RockPaperScissors game = new RockPaperScissors();
+        RPSGame game = new RPSGame();
         // String userMove = game.getHumanMove();
         // String compMove = game.getComputerMove();
         boolean again = true;
-        while (again) {
+        while (again==true) {
             again = game.playGame();
         }
-        //Exception in thread "main" java.util.NoSuchElementException
+        scn.close();
+
     }
 }
