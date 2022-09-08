@@ -1,3 +1,5 @@
+package RockPaperScissors.src;
+
 import java.util.Random;
 import java.util.Scanner;
 
